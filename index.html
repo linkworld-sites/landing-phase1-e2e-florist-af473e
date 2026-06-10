@@ -1,0 +1,1376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><style id='brand'>:root{
+  --bg:#0b0b0c; --surface:#141417; --surface-2:#1c1c21;
+  --fg:#f5f5f7; --fg-muted:#a1a1aa; --border:#26262b;
+  --accent:#3b82f6; --accent-fg:#fff; --radius:14px; --maxw:1100px;
+  --font:'Inter',system-ui,-apple-system,Segoe UI,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--bg);color:var(--fg);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.container{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.section{padding:96px 0}
+.hero{padding:140px 0 90px;text-align:center}
+h1{font-size:clamp(2.5rem,6vw,4.5rem);line-height:1.05;letter-spacing:-.02em}
+h2{font-size:clamp(1.8rem,4vw,2.8rem);letter-spacing:-.01em}
+.muted{color:var(--fg-muted)}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:var(--accent-fg);padding:14px 28px;border-radius:var(--radius);font-weight:600;text-decoration:none;border:0;cursor:pointer;transition:transform .15s ease,opacity .15s ease}
+.btn:hover{transform:translateY(-2px);opacity:.92}
+.btn-ghost{background:transparent;color:var(--fg);border:1px solid var(--border)}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:28px}
+.grid{display:grid;gap:24px}
+@media(max-width:640px){.section{padding:64px 0}.hero{padding:96px 0 64px}}
+</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Petal & Keep — Dried Flowers That Last</title>
+<style>
+  /* ── Brand overrides & category palette ── */
+  :root {
+    --bg: #faf7f4;
+    --surface: #f2ece4;
+    --fg: #2c2118;
+    --fg-muted: #7a6a5a;
+    --accent: #b5714a;
+    --accent-light: #e8d5c4;
+    --accent-dark: #8a4f2e;
+    --blush: #e8c9b8;
+    --sage: #8a9e82;
+    --sage-light: #d4e0d0;
+    --border: #ddd0c4;
+    --radius: 14px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background: var(--bg);
+    color: var(--fg);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* Typography */
+  h1, h2, h3, h4 {
+    font-family: 'Georgia', serif;
+    font-weight: normal;
+    line-height: 1.25;
+  }
+
+  .sans {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+  }
+
+  /* Container */
+  .container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .section {
+    padding: 90px 0;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(250, 247, 244, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    transition: box-shadow 0.3s ease;
+  }
+  nav.scrolled {
+    box-shadow: 0 2px 20px rgba(44,33,24,0.08);
+  }
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    max-width: 1140px;
+    margin: 0 auto;
+  }
+  .nav-logo {
+    font-size: 1.35rem;
+    letter-spacing: 0.04em;
+    color: var(--fg);
+    text-decoration: none;
+  }
+  .nav-logo span {
+    color: var(--accent);
+  }
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .nav-links a {
+    color: var(--fg-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  .btn {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    padding: 14px 32px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.06em;
+    font-weight: 500;
+    transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+    border: none;
+    cursor: pointer;
+  }
+  .btn:hover {
+    background: var(--accent-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(181,113,74,0.35);
+  }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--accent);
+    border: 1.5px solid var(--accent);
+    padding: 13px 30px;
+  }
+  .btn-ghost:hover {
+    background: var(--accent);
+    color: #fff;
+  }
+
+  .btn-sage {
+    background: var(--sage);
+    color: #fff;
+  }
+  .btn-sage:hover {
+    background: #6e8567;
+    box-shadow: 0 8px 24px rgba(138,158,130,0.4);
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding-top: 80px;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 70% 60% at 75% 50%, rgba(232,197,184,0.45) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 15% 80%, rgba(212,224,208,0.35) 0%, transparent 60%),
+      var(--bg);
+  }
+
+  /* Decorative botanical SVG circles */
+  .hero-deco {
+    position: absolute;
+    right: -60px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 580px;
+    height: 580px;
+    opacity: 0.18;
+    pointer-events: none;
+  }
+
+  .hero-deco-sm {
+    position: absolute;
+    left: 5%;
+    top: 15%;
+    width: 120px;
+    height: 120px;
+    opacity: 0.12;
+    pointer-events: none;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .hero h1 {
+    font-size: clamp(2.8rem, 5.5vw, 4.4rem);
+    color: var(--fg);
+    margin-bottom: 24px;
+    letter-spacing: -0.01em;
+  }
+
+  .hero h1 em {
+    color: var(--accent);
+    font-style: italic;
+  }
+
+  .hero-sub {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 1.05rem;
+    color: var(--fg-muted);
+    max-width: 480px;
+    margin-bottom: 40px;
+    line-height: 1.8;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .hero-trust {
+    margin-top: 56px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.82rem;
+    color: var(--fg-muted);
+  }
+  .hero-trust-divider {
+    width: 1px;
+    height: 28px;
+    background: var(--border);
+  }
+  .hero-trust-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+  .hero-trust-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--sage);
+    flex-shrink: 0;
+  }
+
+  /* Floating petals animation */
+  .petal-float {
+    position: absolute;
+    border-radius: 50% 0 50% 0;
+    opacity: 0;
+    animation: floatPetal 10s ease-in-out infinite;
+    pointer-events: none;
+  }
+  @keyframes floatPetal {
+    0%   { opacity: 0; transform: translateY(0) rotate(0deg); }
+    10%  { opacity: 0.6; }
+    90%  { opacity: 0.3; }
+    100% { opacity: 0; transform: translateY(-80px) rotate(30deg); }
+  }
+
+  /* ── BOTANICAL BAND ── */
+  .band {
+    background: var(--fg);
+    color: #fff;
+    padding: 22px 0;
+    overflow: hidden;
+  }
+  .band-track {
+    display: flex;
+    gap: 60px;
+    white-space: nowrap;
+    animation: marquee 28s linear infinite;
+  }
+  .band-item {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.65);
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-shrink: 0;
+  }
+  .band-item::after {
+    content: '✿';
+    color: var(--accent);
+    font-size: 0.9rem;
+  }
+  @keyframes marquee {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* ── FEATURES / VALUE ── */
+  .section-label {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .section-title {
+    font-size: clamp(1.9rem, 3.5vw, 2.9rem);
+    color: var(--fg);
+    margin-bottom: 16px;
+    max-width: 540px;
+  }
+
+  .section-sub {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 1rem;
+    color: var(--fg-muted);
+    max-width: 520px;
+    line-height: 1.8;
+    margin-bottom: 56px;
+  }
+
+  /* Feature cards grid */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .feature-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 36px 30px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--blush));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s ease;
+  }
+  .feature-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 48px rgba(44,33,24,0.1);
+    border-color: var(--accent-light);
+  }
+  .feature-card:hover::before {
+    transform: scaleX(1);
+  }
+
+  .feature-icon {
+    width: 52px;
+    height: 52px;
+    background: var(--accent-light);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    font-size: 1.4rem;
+  }
+
+  .feature-card h3 {
+    font-size: 1.15rem;
+    margin-bottom: 10px;
+    color: var(--fg);
+  }
+
+  .feature-card p {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.9rem;
+    color: var(--fg-muted);
+    line-height: 1.75;
+  }
+
+  /* ── COLLECTIONS ── */
+  .collections-section {
+    background: var(--surface);
+  }
+
+  .collections-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 20px;
+  }
+
+  .collection-card {
+    border-radius: var(--radius);
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    background: var(--border);
+  }
+  .collection-card:first-child {
+    grid-row: 1 / 3;
+  }
+
+  .collection-img {
+    width: 100%;
+    height: 100%;
+    min-height: 220px;
+    display: block;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .collection-card:first-child .collection-img {
+    min-height: 480px;
+  }
+
+  /* Illustrated botanical placeholders */
+  .coll-bg {
+    width: 100%;
+    height: 100%;
+    min-height: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.4s ease;
+  }
+  .collection-card:hover .coll-bg {
+    transform: scale(1.04);
+  }
+
+  .coll-bg-1 { background: linear-gradient(135deg, #e8d5c4 0%, #c9a88a 50%, #b5714a 100%); }
+  .coll-bg-2 { background: linear-gradient(135deg, #d4e0d0 0%, #a8c4a0 50%, #8a9e82 100%); }
+  .coll-bg-3 { background: linear-gradient(135deg, #f0e0d8 0%, #e0b8a8 50%, #c8866a 100%); }
+  .coll-bg-4 { background: linear-gradient(135deg, #ede0d4 0%, #c8b098 60%, #a88060 100%); }
+  .coll-bg-5 { background: linear-gradient(135deg, #dde8dc 0%, #b0c8ac 50%, #8a9e82 100%); }
+
+  .coll-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(44,33,24,0.7) 0%, transparent 50%);
+  }
+  .coll-label {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    color: #fff;
+    z-index: 2;
+  }
+  .coll-label h4 {
+    font-size: 1.15rem;
+    margin-bottom: 4px;
+  }
+  .coll-label span {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.8rem;
+    opacity: 0.78;
+    letter-spacing: 0.06em;
+  }
+
+  /* SVG botanical shapes inside collection cards */
+  .coll-flora {
+    position: absolute;
+    opacity: 0.25;
+    pointer-events: none;
+  }
+
+  /* ── HOW IT WORKS ── */
+  .steps-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    position: relative;
+  }
+  .steps-row::before {
+    content: '';
+    position: absolute;
+    top: 28px;
+    left: 12%;
+    right: 12%;
+    height: 1px;
+    background: repeating-linear-gradient(to right, var(--border) 0, var(--border) 8px, transparent 8px, transparent 16px);
+    z-index: 0;
+  }
+
+  .step-item {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .step-num {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--accent-light);
+    border: 2px solid var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-family: 'Georgia', serif;
+    font-size: 1.1rem;
+    color: var(--accent);
+    background: var(--bg);
+    transition: background 0.3s, color 0.3s;
+  }
+  .step-item:hover .step-num {
+    background: var(--accent);
+    color: #fff;
+  }
+
+  .step-item h4 {
+    font-size: 1rem;
+    margin-bottom: 8px;
+    color: var(--fg);
+  }
+  .step-item p {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.85rem;
+    color: var(--fg-muted);
+    line-height: 1.7;
+  }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials-section {
+    background: var(--fg);
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .testimonials-section::before {
+    content: '"';
+    position: absolute;
+    top: -20px;
+    left: 5%;
+    font-size: 30rem;
+    color: rgba(255,255,255,0.03);
+    font-family: Georgia, serif;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .testimonial-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: var(--radius);
+    padding: 32px 28px;
+    transition: background 0.3s;
+  }
+  .testimonial-card:hover {
+    background: rgba(255,255,255,0.1);
+  }
+
+  .testimonial-stars {
+    display: flex;
+    gap: 3px;
+    margin-bottom: 16px;
+  }
+  .star { color: var(--accent); font-size: 0.95rem; }
+
+  .testimonial-card blockquote {
+    font-size: 0.97rem;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 20px;
+    font-style: italic;
+  }
+
+  .testimonial-author {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.82rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-style: normal;
+  }
+
+  /* ── PRICING ── */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    align-items: start;
+  }
+
+  .pricing-card {
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: calc(var(--radius) + 4px);
+    padding: 40px 32px;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .pricing-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 56px rgba(44,33,24,0.12);
+  }
+
+  .pricing-card.featured {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+    transform: scale(1.04);
+  }
+  .pricing-card.featured:hover {
+    transform: scale(1.04) translateY(-6px);
+    box-shadow: 0 24px 60px rgba(181,113,74,0.45);
+  }
+
+  .pricing-badge {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--fg);
+    color: #fff;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 6px 18px;
+    border-radius: 50px;
+    white-space: nowrap;
+  }
+
+  .pricing-plan-name {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    opacity: 0.7;
+  }
+  .pricing-card.featured .pricing-plan-name { opacity: 0.85; color: rgba(255,255,255,0.85); }
+
+  .pricing-price {
+    font-size: 2.8rem;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .pricing-price sup {
+    font-size: 1.2rem;
+    vertical-align: top;
+    margin-top: 8px;
+    display: inline-block;
+  }
+  .pricing-period {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.82rem;
+    opacity: 0.65;
+    margin-bottom: 28px;
+  }
+
+  .pricing-divider {
+    height: 1px;
+    background: var(--border);
+    margin-bottom: 24px;
+  }
+  .pricing-card.featured .pricing-divider { background: rgba(255,255,255,0.25); }
+
+  .pricing-features {
+    list-style: none;
+    margin-bottom: 32px;
+  }
+  .pricing-features li {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.9rem;
+    padding: 7px 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    color: var(--fg-muted);
+    line-height: 1.5;
+  }
+  .pricing-card.featured .pricing-features li { color: rgba(255,255,255,0.88); }
+
+  .pricing-features li::before {
+    content: '✓';
+    color: var(--sage);
+    font-weight: bold;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .pricing-card.featured .pricing-features li::before { color: rgba(255,255,255,0.9); }
+
+  .btn-white {
+    background: #fff;
+    color: var(--accent);
+  }
+  .btn-white:hover {
+    background: var(--fg);
+    color: #fff;
+    box-shadow: 0 8px 24px rgba(44,33,24,0.25);
+  }
+
+  /* ── SUSTAINABILITY STRIP ── */
+  .sustain-strip {
+    background: var(--sage-light);
+    padding: 60px 0;
+  }
+
+  .sustain-inner {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+  }
+
+  .sustain-text { flex: 1; }
+  .sustain-text h2 {
+    font-size: 1.9rem;
+    margin-bottom: 12px;
+    color: var(--fg);
+  }
+  .sustain-text p {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.95rem;
+    color: var(--fg-muted);
+    line-height: 1.8;
+    max-width: 440px;
+  }
+
+  .sustain-stats {
+    display: flex;
+    gap: 40px;
+    flex-shrink: 0;
+  }
+
+  .sustain-stat {
+    text-align: center;
+  }
+  .sustain-stat strong {
+    display: block;
+    font-size: 2.2rem;
+    color: var(--sage);
+    font-family: 'Georgia', serif;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .sustain-stat span {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.8rem;
+    color: var(--fg-muted);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  /* ── NEWSLETTER ── */
+  .newsletter-section {
+    background: var(--accent-light);
+    padding: 80px 0;
+    text-align: center;
+  }
+
+  .newsletter-section h2 {
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    margin-bottom: 12px;
+    color: var(--fg);
+  }
+  .newsletter-section p {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    color: var(--fg-muted);
+    font-size: 0.95rem;
+    margin-bottom: 32px;
+  }
+
+  .email-form {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+  .email-input {
+    flex: 1;
+    padding: 14px 20px;
+    border: 1.5px solid var(--border);
+    border-radius: 50px;
+    background: #fff;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.9rem;
+    color: var(--fg);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .email-input::placeholder { color: var(--fg-muted); opacity: 0.7; }
+  .email-input:focus { border-color: var(--accent); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--fg);
+    color: rgba(255,255,255,0.7);
+    padding: 70px 0 30px;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.8fr 1fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 56px;
+  }
+
+  .footer-brand h3 {
+    font-size: 1.3rem;
+    color: #fff;
+    margin-bottom: 14px;
+    letter-spacing: 0.04em;
+  }
+  .footer-brand h3 span { color: var(--accent); }
+  .footer-brand p {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.88rem;
+    line-height: 1.8;
+    max-width: 280px;
+    color: rgba(255,255,255,0.55);
+  }
+
+  .footer-social {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+  }
+  .social-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    text-decoration: none;
+    color: rgba(255,255,255,0.65);
+    transition: background 0.2s, color 0.2s;
+  }
+  .social-btn:hover { background: var(--accent); color: #fff; }
+
+  .footer-col h4 {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 18px;
+  }
+  .footer-col ul {
+    list-style: none;
+  }
+  .footer-col li {
+    margin-bottom: 10px;
+  }
+  .footer-col a {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-col a:hover { color: var(--accent); }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .footer-bottom p {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.35);
+  }
+  .footer-bottom-links {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+  }
+  .footer-bottom-links a {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.35);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-bottom-links a:hover { color: rgba(255,255,255,0.7); }
+
+  /* ── Scroll reveal ── */
+  .reveal {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+  .reveal.hidden {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 900px) {
+    .features-grid,
+    .testimonials-grid,
+    .pricing-grid { grid-template-columns: 1fr; }
+    .collections-grid { grid-template-columns: 1fr 1fr; }
+    .collection-card:first-child { grid-row: auto; grid-column: 1 / 3; }
+    .steps-row { grid-template-columns: 1fr 1fr; }
+    .steps-row::before { display: none; }
+    .sustain-inner { flex-direction: column; gap: 32px; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .pricing-card.featured { transform: scale(1); }
+    .nav-links { display: none; }
+  }
+
+  @media (max-width: 600px) {
+    .collections-grid { grid-template-columns: 1fr; }
+    .collection-card:first-child { grid-column: auto; }
+    .steps-row { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .email-form { flex-direction: column; }
+    .sustain-stats { gap: 24px; }
+    .hero-trust { flex-direction: column; align-items: flex-start; gap: 10px; }
+    .hero-trust-divider { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">Petal <span>&</span> Keep</a>
+    <ul class="nav-links">
+      <li><a href="#collections">Collections</a></li>
+      <li><a href="#how-it-works">How It Works</a></li>
+      <li><a href="#subscriptions">Subscriptions</a></li>
+      <li><a href="#about">Our Story</a></li>
+    </ul>
+    <a href="#subscriptions" class="btn" style="padding: 11px 24px; font-size: 0.82rem;">Shop Now</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+
+  <!-- Floating petal elements -->
+  <div class="petal-float" style="width:14px;height:10px;background:#e8c9b8;top:30%;left:62%;animation-delay:0s;animation-duration:9s;"></div>
+  <div class="petal-float" style="width:10px;height:8px;background:#d4e0d0;top:60%;left:70%;animation-delay:2s;animation-duration:12s;"></div>
+  <div class="petal-float" style="width:18px;height:12px;background:#e8d5c4;top:45%;left:80%;animation-delay:4s;animation-duration:10s;"></div>
+  <div class="petal-float" style="width:8px;height:6px;background:#b5714a;opacity:0.4;top:25%;left:55%;animation-delay:6s;animation-duration:11s;"></div>
+
+  <!-- Large decorative botanical circle -->
+  <svg class="hero-deco" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="250" cy="250" r="240" stroke="#b5714a" stroke-width="1"/>
+    <circle cx="250" cy="250" r="190" stroke="#b5714a" stroke-width="0.5" stroke-dasharray="4 8"/>
+    <!-- Botanical stems -->
+    <path d="M250 80 Q280 140 250 180 Q220 140 250 80" stroke="#8a9e82" stroke-width="1.5" fill="none"/>
+    <path d="M250 80 L255 60 M250 80 L245 58" stroke="#8a9e82" stroke-width="1"/>
+    <ellipse cx="255" cy="55" rx="8" ry="12" fill="none" stroke="#8a9e82" stroke-width="1" transform="rotate(15,255,55)"/>
+    <ellipse cx="244" cy="53" rx="7" ry="11" fill="none" stroke="#8a9e82" stroke-width="1" transform="rotate(-10,244,53)"/>
+
+    <path d="M390 200 Q340 230 310 250 Q340 270 390 300" stroke="#b5714a" stroke-width="1.5" fill="none"/>
+    <ellipse cx="395" cy="195" rx="14" ry="9" fill="none" stroke="#b5714a" stroke-width="1" transform="rotate(-30,395,195)"/>
+    <ellipse cx="396" cy="305" rx="14" ry="9" fill="none" stroke="#b5714a" stroke-width="1" transform="rotate(30,396,305)"/>
+
+    <path d="M250 420 Q220 360 250 320 Q280 360 250 420" stroke="#8a9e82" stroke-width="1.5" fill="none"/>
+    <circle cx="250" cy="435" r="12" fill="none" stroke="#8a9e82" stroke-width="1"/>
+    <circle cx="250" cy="435" r="6" fill="none" stroke="#8a9e82" stroke-width="0.5"/>
+
+    <path d="M110 200 Q160 230 190 250 Q160 270 110 300" stroke="#b5714a" stroke-width="1.5" fill="none"/>
+    <ellipse cx="105" cy="195" rx="14" ry="9" fill="none" stroke="#b5714a" stroke-width="1" transform="rotate(30,105,195)"/>
+    <ellipse cx="104" cy="305" rx="14" ry="9" fill="none" stroke="#b5714a" stroke-width="1" transform="rotate(-30,104,305)"/>
+
+    <!-- Center motif -->
+    <circle cx="250" cy="250" r="30" fill="none" stroke="#b5714a" stroke-width="0.8"/>
+    <path d="M250 220 Q265 235 250 250 Q235 235 250 220" fill="none" stroke="#b5714a" stroke-width="1"/>
+    <path d="M280 250 Q265 265 250 250 Q265 235 280 250" fill="none" stroke="#b5714a" stroke-width="1"/>
+    <path d="M250 280 Q235 265 250 250 Q265 265 250 280" fill="none" stroke="#b5714a" stroke-width="1"/>
+    <path d="M220 250 Q235 235 250 250 Q235 265 220 250" fill="none" stroke="#b5714a" stroke-width="1"/>
+  </svg>
+
+  <svg class="hero-deco-sm" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="50" cy="50" r="45" stroke="#8a9e82" stroke-width="1"/>
+    <path d="M50 20 Q60 35 50 50 Q40 35 50 20" stroke="#8a9e82" stroke-width="1.5" fill="none"/>
+    <path d="M80 50 Q65 60 50 50 Q65 40 80 50" stroke="#8a9e82" stroke-width="1.5" fill="none"/>
+    <path d="M50 80 Q40 65 50 50 Q60 65 50 80" stroke="#8a9e82" stroke-width="1.5" fill="none"/>
+    <path d="M20 50 Q35 40 50 50 Q35 60 20 50" stroke="#8a9e82" stroke-width="1.5" fill="none"/>
+  </svg>
+
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-eyebrow">Botanically Sourced · Sustainably Dried</div>
+      <h1>Flowers That<br><em>Never</em> Forget<br>to Bloom</h1>
+      <p class="hero-sub">Curated dried flower arrangements, subscription boxes & bespoke bouquets — designed to last years, not days. Bring enduring beauty into every space.</p>
+      <div class="hero-ctas">
+        <a href="#collections" class="btn">Explore Collections</a>
+        <a href="#subscriptions" class="btn btn-ghost">Start a Subscription</a>
+      </div>
+      <div class="hero-trust">
+        <div class="hero-trust-item">
+          <div class="hero-trust-dot"></div>
+          <span>Ethically harvested</span>
+        </div>
+        <div class="hero-trust-divider"></div>
+        <div class="hero-trust-item">
+          <div class="hero-trust-dot"></div>
+          <span>Ships across Europe & UK</span>
+        </div>
+        <div class="hero-trust-divider"></div>
+        <div class="hero-trust-item">
+          <div class="hero-trust-dot"></div>
+          <span>Lasts 2–5 years</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE BAND -->
+<div class="band">
+  <div class="band-track">
+    <!-- duplicated for seamless loop -->
+    <div class="band-item">Pampas Grass</div>
+    <div class="band-item">Lavender Bunches</div>
+    <div class="band-item">Dried Roses</div>
+    <div class="band-item">Lunaria Honesty</div>
+    <div class="band-item">Wheat & Rye</div>
+    <div class="band-item">Gypsophila</div>
+    <div class="band-item">Bunny Tail Grass</div>
+    <div class="band-item">Preserved Eucalyptus</div>
+    <div class="band-item">Dried Protea</div>
+    <div class="band-item">Statice Flowers</div>
+    <div class="band-item">Pampas Grass</div>
+    <div class="band-item">Lavender Bunches</div>
+    <div class="band-item">Dried Roses</div>
+    <div class="band-item">Lunaria Honesty</div>
+    <div class="band-item">Wheat & Rye</div>
+    <div class="band-item">Gypsophila</div>
+    <div class="band-item">Bunny Tail Grass</div>
+    <div class="band-item">Preserved Eucalyptus</div>
+    <div class="band-item">Dried Protea</div>
+    <div class="band-item">Statice Flowers</div>
+  </div>
+</div>
+
+<!-- FEATURES / VALUE -->
+<section class="section" id="about">
+  <div class="container">
+    <div class="section-label">Why Petal & Keep</div>
+    <h2 class="section-title">Beauty That Endures Every Season</h2>
+    <p class="section-sub">We believe flowers shouldn't be fleeting. Every bloom in our collection is thoughtfully sourced, gently dried, and arranged to honour the natural imperfections that make each piece uniquely yours.</p>
+
+    <div class="features-grid">
+      <div class="feature-card reveal">
+        <div class="feature-icon">🌾</div>
+        <h3>Artisan-Dried Botanicals</h3>
+        <p>Every stem is slow-dried using traditional methods — no chemicals, no shortcuts. The result is vivid colour retention that lasts for years, not weeks.</p>
+      </div>
+      <div class="feature-card reveal" style="transition-delay:0.1s">
+        <div class="feature-icon">📦</div>
+        <h3>Curated Monthly Boxes</h3>
+        <p>Our seasonal subscription boxes arrive with hand-selected varieties, a styling card, and a vase recommendation — everything you need to create a statement display.</p>
+      </div>
+      <div class="feature-card reveal" style="transition-delay:0.2s">
+        <div class="feature-icon">💐</div>
+        <h3>Bespoke Arrangements</h3>
+        <p>Working on a wedding, event, or gifting project? Our floralists craft custom dried bouquets and installations tailored to your palette and vision.</p>
+      </div>
+      <div class="feature-card reveal" style="transition-delay:0.05s">
+        <div class="feature-icon">♻️</div>
+        <h3>Zero-Waste Packaging</h3>
+        <p>All packaging is recycled, recyclable, or compostable. Our tissue, wrapping paper, and boxes are FSC-certified and printed with plant-based inks.</p>
+      </div>
+      <div class="feature-card reveal" style="transition-delay:0.15s">
+        <div class="feature-icon">🌍</div>
+        <h3>European Small Farms</h3>
+        <p>We partner with independent growers across the Netherlands, France, and the UK — supporting biodiversity and fair practices at every step.</p>
+      </div>
+      <div class="feature-card reveal" style="transition-delay:0.25s">
+        <div class="feature-icon">✂️</div>
+        <h3>Styling Guides Included</h3>
+        <p>Each order arrives with a beautifully printed care and styling guide — tips on arrangement, room placement, and how to refresh your display each season.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COLLECTIONS -->
+<section class="section collections-section" id="collections">
+  <div class="container">
+    <div class="section-label">Our Collections</div>
+    <h2 class="section-title">Find Your Aesthetic</h2>
+    <p class="section-sub" style="margin-bottom: 40px;">From wild meadow textures to refined minimal palettes, there's a collection to complement every interior.</p>
+
+    <div class="collections-grid">
+      <!-- Large card -->
+      <div class="collection-card">
+        <div class="collection-img">
+          <div class="coll-bg coll-bg-1" style="min-height:480px;">
+            <svg class="coll-flora" width="260" height="260" viewBox="0 0 260 260" fill="none">
+              <path d="M130 20 Q160 80 130 130 Q100 80 130 20" stroke="rgba(255,255,255,0.6)" stroke-width="2" fill="none"/>
+              <path d="M200 130 Q140 160 130 130 Q140 100 200 130" stroke="rgba(255,255,255,0.6)" stroke-width="2" fill="none"/>
+              <path d="M130 240 Q100 180 130 130 Q160 180 130 240" stroke="rgba(255,255,255,0.6)" stroke-width="2" fill="none"/>
+              <path d="M60 130 Q120 100 130 130 Q120 160 60 130" stroke="rgba(255,255,255,0.6)" stroke-width="2" fill="none"/>
+              <circle cx="130" cy="130" r="15" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" fill="none"/>
+              <path d="M130 50 Q145 70 130 80 Q115 70 130 50" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" fill="none"/>
+              <path d="M180 80 Q165 95 130 80 Q145 65 180 80" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" fill="none"/>
+            </svg>
+          </div>
+          <div class="coll-overlay"></div>
+        </div>
+        <div class="coll-label">
+          <h4>The Terracotta Edit</h4>
+          <span>Warm Earthy Tones · 24 varieties</span>
+        </div>
+      </div>
+
+      <!-- Top right -->
+      <div class="collection-card">
+        <div class="collection-img">
+          <div class="coll-bg coll-bg-2" style="min-height:220px;">
+            <svg class="coll-flora" width="120" height="120" viewBox="0 0 120 120" fill="none">
+              <path d="M60 10 Q70 40 60 60 Q50 40 60 10" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" fill="none"/>
+              <path d="M90 60 Q70 70 60 60 Q70 50 90 60" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" fill="none"/>
+              <path d="M60 110 Q50 80 60 60 Q70 80 60 110" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" fill="none"/>
+              <path d="M30 60 Q50 50 60 60 Q50 70 30 60" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" fill="none"/>
+            </svg>
+          </div>
+          <div class="coll-overlay"></div>
+        </div>
+        <div class="coll-label">
+          <h4>Sage & Meadow</h4>
+          <span>Botanical Greens · 18 varieties</span>
+        </div>
+      </div>
+
+      <!-- Bottom middle -->
+      <div class="collection-card">
+        <div class="collection-img">
+          <div class="coll-bg coll-bg-3" style="min-height:220px;">
+            <svg class="coll-flora" width="120" height="120" viewBox="0 0 120 120" fill="none">
+              <circle cx="60" cy="60" r="30" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" fill="none" stroke-dasharray="3 6"/>
+              <path d="M60 10 L60 110 M10 60 L110 60" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+              <circle cx="60" cy="60" r="10" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" fill="none"/>
+            </svg>
+          </div>
+          <div class="coll-overlay"></div>
+        </div>
+        <div class="coll-label">
+          <h4>Blush & Cloud</h4>
+          <span>Soft Pinks & Whites · 20 varieties</span>
+        </div>
+      </div>
+
+      <!-- Bottom left of smaller -->
+      <div class="collection-card">
+        <div class="collection-img">
+          <div class="coll-bg coll-bg-4" style="min-height:220px;">
+            <svg class="coll-flora" width="120" height="120" viewBox="0 0 120 120" fill="none">
+              <path d="M20 100 Q40 60 60 40 Q80 20 100 10" stroke="rgba(255,255,255,0.5)" stroke-width="2" fill="none"/>
+              <ellipse cx="35" cy="85" rx="14" ry="8" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" transform="rotate(-45,35,85)"/>
+              <ellipse cx="65" cy="50" rx="14" ry="8" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" transform="rotate(-45,65,50)"/>
+            </svg>
+          </div>
+          <div class="coll-overlay"></div>
+        </div>
+        <div class="coll-label">
+          <h4>Autumn Wild</h4>
+          <span>Harvest Tones · Seasonal</span>
+        </div>
+      </div>
+
+      <!-- Bottom right -->
+      <div class="collection-card">
+        <div class="collection-img">
+          <div class="coll-bg coll-bg-5" style="min-height:220px;">
+            <svg class="coll-flora" width="120" height="120" viewBox="0 0 120 120" fill="none">
+              <path d="M60 100 L60 30" stroke="rgba(255,255,255,0.5)" stroke-width="2"/>
+              <path d="M60 70 Q40 55 30 45" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" fill="none"/>
+              <path d="M60 55 Q80 40 90 30" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" fill="none"/>
+              <ellipse cx="25" cy="42" rx="12" ry="7" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" transform="rotate(-30,25,42)"/>
+              <ellipse cx="94" cy="27" rx="12" ry="7" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" transform="rotate(-30,94,27)"/>
+              <circle cx="60" cy="28" r="7" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <div class="coll-overlay"></div>
+        </div>
+        <div class="coll-label">
+          <h4>Nordic Minimal</h4>
+          <span>Muted Naturals · 15 varieties</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section" id="how-it-works">
+  <div class="container">
+    <div style="text-align:center; margin-bottom: 56px;">
+      <div class="section-label" style="justify-content:center;">Simple & Considered</div>
+      <h2 class="section-title" style="max-width:100%; text-align:center;">From Farm to Your Favourite Shelf</h2>
+    </div>
+    <div class="steps-row">
+      <div class="step-item reveal">
+        <div class="step-num">01</div>
+        <h4>We Source Seasonally</h4>
+        <p>Flowers are harvested at peak bloom from our partner farms across Europe, selected for their drying qualities and natural beauty.</p>
+      </div>
+      <div class="step-item reveal" style="transition-delay:0.1s">
+        <div class="step-num">02</div>
+        <h4>Slow-Dried With Care</h4>
+        <p>Bundles are hung in airy drying rooms for 3–6 weeks — no artificial heat, no chemicals. Just time and patience.</p>
+      </div>
+      <div class="step-item reveal" style="transition-delay:0.2s">
+        <div class="step-num">03</div>
+        <h4>Curated & Arranged</h4>
+        <p>Our in-house team hand-selects and arranges each bouquet, subscription box, or bespoke order with an eye for texture and colour harmony.</p>
+      </div>
+      <div class="step-item reveal" style="transition-delay:0.3s">
+        <div class="step-num">04</div>
+        <h4>Delivered to You</h4>
+        <p>Wrapped in recycled paper and nestled in a zero-waste box, your order arrives ready to display — no water, no fuss, just beauty.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section testimonials-section">
+  <div class="container" style="position:relative;z-index:1;">
+    <div style="margin-bottom: 48px;">
+      <div class="section-label" style="color:var(--accent);">
+        <span style="display:block;width:24px;height:1px;background:var(--accent);"></span>
+        What Our Customers Say
+      </div>
+      <h2 class="section-title" style="color:#fff; max-width:500px;">Flowers That Spark<br>Daily Joy</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal">
+        <div class="testimonial-stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <blockquote>"My Terracotta Edit wreath has been on my mantelpiece for over a year and still gets compliments every time anyone visits. The quality is extraordinary."</blockquote>
+        <cite class="testimonial-author">— Sophie M., London</cite>
+      </div>
+      <div class="testimonial-card reveal" style="transition-delay:0.1s">
+        <div class="testimonial-stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <blockquote>"I ordered a bespoke arrangement for our wedding ceremony and the floralists were incredible. They matched our palette perfectly from just a mood board."</blockquote>
+        <cite class="testimonial-author">— Laura & Tom, Amsterdam</cite>
+      </div>
+      <div class="testimonial-card reveal" style="transition-delay:0.2s">
+        <div class="testimonial-stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <blockquote>"The monthly subscription is genuinely one of my favourite things. Each box is like a little surprise — new textures and palettes I'd never have found myself."</blockquote>
+        <cite class="testimonial-author">— Ingrid K., Copenhagen</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING / SUBSCRIPTIONS -->
+<section class="section" id="subscriptions">
+  <div class="container">
+    <div style="text-align:center; margin-bottom: 56px;">
+      <div class="section-label" style="justify-content:center;">Subscription Boxes</div>
+      <h2 class="section-title" style="max-width:100%;text-align:center;">A New Season,<br>Every Month</h2>
+      <p class="section-sub" style="text-align:center;margin:16px auto 0;max-width:500px;">Choose a plan that fits your space. Cancel or pause anytime — no long-term commitments, just consistently beautiful florals.</p>
+    </div>
+    <div class="pricing-grid">
+
+      <!-- Starter -->
+      <div class="pricing-card reveal">
+        <div class="pricing-plan-name sans">Stem</div>
+        <div class="pricing-price"><sup>£</sup>22</div>
+        <div class="pricing-period sans">per month · 3-stem mini bundle</div>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li>3 artisan-dried stems</li>
+          <li>Seasonal botanical selection</li>
+          <li>Printed styling card</li>
+          <li>Zero-waste packaging</li>
+          <li>Free delivery on 3+ months</li>
+        </ul>
+        <a href="#" class="btn btn-ghost" style="width:100%;text-align:center;">Start Stem Plan</a>
+      </div>
+
+      <!-- Featured -->
+      <div class="pricing-card featured reveal" style="transition-delay:0.1s">
+        <div class="pricing-badge">Most Popular</div>
+        <div class="pricing-plan-name">Bouquet</div>
+        <div class="pricing-price"><sup>£</sup>44</div>
+        <div class="pricing-period" style="color:rgba(255,255,255,0.7);">per month · full curated bouquet</div>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li>10–14 mixed dried stems</li>
+          <li>Hand-tied bouquet arrangement</li>
+          <li>Seasonal mood theme</li>
+          <li>Styling guide booklet</li>
+          <li>Early access to new varieties</li>
+          <li>Free delivery always</li>
+        </ul>
+        <a href="#" class="btn btn-white" style="width:100%;text-align:center;">Start Bouquet Plan</a>
+      </div>
+
+      <!-- Premium -->
+      <div class="pricing-card reveal" style="transition-delay:0.2s">
+        <div class="pricing-plan-name sans">Atelier</div>
+        <div class="pricing-price"><sup>£</sup>88</div>
+        <div class="pricing-period sans">per month · curated installation box</div>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li>20–30 premium dried stems
