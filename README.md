@@ -3,4 +3,4 @@ Petal &amp; Keep — landing
 
 ## Press
 
-Petal & Keep is a modern floral studio offering bespoke arrangements and preserved keepsake botanicals for weddings, events, and everyday moments. Journalists seeking press assets, founder interviews, or product samples can reach us at press@petalandkeep.com.
+Petal & Keep is a modern floral studio crafting bespoke arrangements and preserved keepsake botanicals for weddings, events, and everyday moments. Journalists seeking press assets, founder interviews, or product samples are welcome to reach out at press@petalandkeep.com.
