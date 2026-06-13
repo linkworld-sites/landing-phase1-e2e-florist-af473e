@@ -73,6 +73,125 @@ body {
   z-index: 1;
 }
 
+/* Blog post body styles */
+.post-body p {
+  font-family: var(--font-dm-sans), system-ui, sans-serif;
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #3B2E28;
+  margin-bottom: 1.5rem;
+}
+
+.post-body h1,
+.post-body h2 {
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-style: italic;
+  color: #3B2E28;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.post-body h1 { font-size: clamp(1.8rem, 3.5vw, 2.5rem); }
+.post-body h2 { font-size: clamp(1.4rem, 2.5vw, 2rem); }
+
+.post-body h3 {
+  font-family: var(--font-dm-sans), system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #3B2E28;
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.post-body strong {
+  font-weight: 400;
+  color: #3B2E28;
+}
+
+.post-body em {
+  font-style: italic;
+}
+
+.post-body a {
+  color: #C4856A;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s ease;
+}
+
+.post-body a:hover {
+  color: #3B2E28;
+}
+
+.post-body ul,
+.post-body ol {
+  padding-left: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.post-body li {
+  font-family: var(--font-dm-sans), system-ui, sans-serif;
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #3B2E28;
+  margin-bottom: 0.4rem;
+}
+
+.post-body ul li {
+  list-style-type: disc;
+}
+
+.post-body ol li {
+  list-style-type: decimal;
+}
+
+.post-body blockquote {
+  border-left: 2px solid #C4856A;
+  padding-left: 1.5rem;
+  margin: 2rem 0;
+  color: rgba(59, 46, 40, 0.65);
+  font-style: italic;
+}
+
+.post-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  font-family: var(--font-dm-sans), system-ui, sans-serif;
+  font-weight: 300;
+  font-size: 0.875rem;
+}
+
+.post-body th {
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  color: rgba(59, 46, 40, 0.5);
+  border-bottom: 1px solid rgba(59, 46, 40, 0.15);
+  padding: 0.6rem 1rem 0.6rem 0;
+  text-align: left;
+}
+
+.post-body td {
+  color: #3B2E28;
+  border-bottom: 1px solid rgba(59, 46, 40, 0.08);
+  padding: 0.75rem 1rem 0.75rem 0;
+  vertical-align: top;
+}
+
+.post-body hr {
+  border: none;
+  border-top: 1px solid rgba(59, 46, 40, 0.12);
+  margin: 3rem 0;
+}
+
 @layer utilities {
   .text-display {
     font-family: var(--font-cormorant), Georgia, serif;

@@ -7,6 +7,7 @@ const navLinks = [
   { label: 'The Craft', href: '#craft' },
   { label: 'Seasonal Edit', href: '#seasonal' },
   { label: 'Workshops', href: '#workshops' },
+  { label: 'Journal', href: '/blog' },
 ]
 
 function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
