@@ -7,6 +7,7 @@ const navLinks = [
   { label: 'The Craft', href: '#craft' },
   { label: 'Seasonal Edit', href: '#seasonal' },
   { label: 'Workshops', href: '#workshops' },
+  { label: 'Journal', href: '/blog' },
   { label: 'Partnerships', href: '#b2b' },
 ]
 
